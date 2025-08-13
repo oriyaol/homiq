@@ -1,13 +1,19 @@
-
 import "./styles/globals.css";
 import Header from "./components/Header";
 import Home from "./pages/Home";
+import Devices from "./pages/Devices";
+import Settings from "./pages/Settings";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export default function App() {
     return (
-        <>
+        <BrowserRouter>
             <Header />
-            <Home />
-        </>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/devices" element={<Devices />} />
+                <Route path="/settings" element={<Settings />} />
+            </Routes>
+        </BrowserRouter>
     );
 }
