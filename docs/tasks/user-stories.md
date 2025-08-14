@@ -30,3 +30,19 @@
 - [ ] Create `pages/Devices.tsx` and `pages/Settings.tsx`
 - [ ] Update `Header` to use `<NavLink>` for active styles
 - [ ] Wrap app with `BrowserRouter` and define routes
+
+## US-040: Action Logging + Quick Actions
+
+**As a developer**, I want a lightweight logger and wired quick-action buttons so that I can trace user actions and debug quickly.
+
+### Acceptance Criteria
+- Logger supports levels: debug, info, warn, error.
+- Clicking **Good Morning** / **Movie Night** emits an `info` log (console + UI).
+- On-screen log viewer shows the last logs in chronological order.
+- No TypeScript errors; app compiles and runs locally.
+
+### Tasks
+- [ ] Create `src/utils/logger.ts` with levels and subscribe API.
+- [ ] Add `src/components/LogViewer.tsx` to display logs.
+- [ ] Update `Home.tsx` to log on quick-action clicks and render `<LogViewer/>`.
+- [ ] Add basic tests later (separate story).
