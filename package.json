@@ -13,6 +13,10 @@
     "licenses:generate": "license-checker --production --json > all_licenses.json && license-checker --production --summary > all_licenses.txt"
   },
   "dependencies": {
+    "axios": "^1.11.0",
+    "date-fns": "^4.1.0",
+    "framer-motion": "^12.23.12",
+    "lucide-react": "^0.539.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.8.0"
