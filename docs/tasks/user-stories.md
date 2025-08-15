@@ -49,3 +49,28 @@ Project board: https://github.com/users/oriyaol/projects/1
 - [ ] Add `src/components/LogViewer.tsx` to display logs.
 - [ ] Update `Home.tsx` to log on quick-action clicks and render `<LogViewer/>`.
 - [ ] Add basic tests later (separate story).
+
+## US-060: Manage Devices - Toggle On/Off
+
+**As a user**, I want to view all my devices in one place and toggle them on or off so that I can easily manage my smart home without opening multiple apps or menus.
+
+### Acceptance Criteria
+- Devices page displays a list of devices with:
+  - Device name
+  - Device type (icon or text)
+  - Current status (On/Off)
+- Each device has a toggle button that changes its state between On and Off.
+- Every toggle action triggers a centralized log entry via the logger.
+- Log entries are visible in the LogViewer component when included on the page.
+
+### Tasks
+- [ ] Create `components/DeviceCard.tsx` to represent each device.
+- [ ] Create `/devices` page with a device list layout.
+- [ ] Implement toggle logic for devices and update UI in real-time.
+- [ ] Connect toggling actions to the centralized logging system.
+- [ ] Add optional `LogViewer` to the `/devices` page to display live logs.
+
+### Notes
+- Devices are currently populated with mock data stored locally in `types/devices.ts`.
+- Future integration planned with backend API for real device states.
+- Logger supports future expansion for severity levels and remote log storage.
