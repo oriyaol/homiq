@@ -1,3 +1,6 @@
+## Agile Board - 
+Project board: https://github.com/users/oriyaol/projects/1
+
 ## US-006: Minimal Home Screen
 
 **As a user**, I want to see a basic home screen with the app name, a quick actions area, and a placeholder status section so that I know the app is running and ready for interaction.

@@ -21,9 +21,15 @@ function emit(level: Level, message: string, meta?: unknown) {
 
 export const logger = {
     setLevel(lvl: Level) { currentLevel = lvl; },
-    subscribe(fn: Subscriber) { subscribers.add(fn); return () => subscribers.delete(fn); },
+    subscribe(fn: Subscriber) {
+        subscribers.add(fn);
+        return () => {
+            subscribers.delete(fn); // מחזיר boolean, אבל אנחנו לא מחזירים אותו הלאה
+        };
+    },
     debug(msg: string, meta?: unknown) { emit('debug', msg, meta); },
     info(msg: string, meta?: unknown) { emit('info', msg, meta); },
     warn(msg: string, meta?: unknown) { emit('warn', msg, meta); },
     error(msg: string, meta?: unknown) { emit('error', msg, meta); },
 };
+

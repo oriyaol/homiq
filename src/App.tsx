@@ -17,3 +17,4 @@ export default function App() {
         </BrowserRouter>
     );
 }
+<Route path="/devices" element={<Devices />} />
