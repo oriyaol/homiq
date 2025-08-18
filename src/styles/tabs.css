@@ -1,0 +1,11 @@
+.rooms-tabs__list{
+  display:inline-flex;gap:8px;background:rgba(255,255,255,.10);
+  padding:6px;border-radius:999px
+}
+.rooms-tabs__trigger{
+  background:transparent;border:0;color:var(--ink);
+  padding:8px 14px;border-radius:999px;font-weight:600
+}
+.rooms-tabs__trigger[data-state="active"]{
+  background:#fff;color:#101828
+}

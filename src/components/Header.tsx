@@ -1,17 +1,32 @@
+import "../styles/header.css";
 import { NavLink } from "react-router-dom";
 
 export default function Header() {
-    const active = ({ isActive }: { isActive: boolean }) =>
-        ({ opacity: isActive ? 1 : 0.7 });
-
     return (
-        <header style={{ padding: "1rem 0", borderBottom: "1px solid #1f2937" }}>
-            <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <header>
+            <div className="container">
                 <strong>Homiq</strong>
-                <nav style={{ display: "flex", gap: "1rem" }}>
-                    <NavLink to="/" style={active}>Home</NavLink>
-                    <NavLink to="/devices" style={active}>Devices</NavLink>
-                    <NavLink to="/settings" style={active}>Settings</NavLink>
+                <nav className="header__nav">
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) => `header__link${isActive ? " active" : ""}`}
+                    >
+                        Dashboard
+                    </NavLink>
+                    <NavLink
+                        to="/devices"
+                        className={({ isActive }) => `header__link${isActive ? " active" : ""}`}
+                    >
+                        Devices
+                    </NavLink>
+                    <NavLink
+                        to="/settings"
+                        className={({ isActive }) => `header__link${isActive ? " active" : ""}`}
+                    >
+                        Settings
+                    </NavLink>
+                    <NavLink to="/updates" className={({ isActive }) => `header__link${isActive ? " active" : ""}`}>Updates</NavLink>
+
                 </nav>
             </div>
         </header>

@@ -1,0 +1,16 @@
+.dashboard__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.dashboard__card {
+  margin-top: 16px;
+  padding: 16px;
+}
+
+.dashboard__actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}

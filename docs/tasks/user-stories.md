@@ -74,3 +74,37 @@ Project board: https://github.com/users/oriyaol/projects/1
 - Devices are currently populated with mock data stored locally in `types/devices.ts`.
 - Future integration planned with backend API for real device states.
 - Logger supports future expansion for severity levels and remote log storage.
+
+### Third-party packages
+- [lucide-react] – Icon set for React UI
+- [framer-motion] – Animation library for React
+
+License summary is available in `all_licenses.json` and `all_licenses.txt`.
+
+
+## US-080: Manage Devices by Room (Filter with Tabs)
+
+**As a user**, I want to filter my smart home devices by room using tabs so that I can quickly find and manage devices in specific areas of my home.
+
+### Acceptance Criteria
+- Tabs are displayed for: **All Devices, Living Room, Bedroom, Kitchen, Hall**.
+- Selecting a tab shows only the devices that belong to that room.
+- "All Devices" tab shows the full list.
+- Each device card displays:
+  - Icon for type (light, plug, thermostat).
+  - Device name.
+  - Room and On/Off status.
+  - Toggle button for changing device state.
+- Toggling a device updates its state instantly and logs the action.
+
+### Tasks
+- [x] Extend `Device` type to include optional `room` property.
+- [x] Update `initialDevices` with mock room data.
+- [x] Create `RoomsTabs.tsx` using Radix Tabs.
+- [x] Add filtering logic in `Devices.tsx` with `roomFilter` state.
+- [x] Update `DeviceCard.tsx` to display room in the meta info.
+
+### Notes
+- Current room data is mock/local only.
+- Future extension: sync room info from backend API.
+- Tabs styled with `tabs.css` for pill-shaped buttons.
