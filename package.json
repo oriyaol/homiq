@@ -11,7 +11,9 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
-    "licenses:generate": "license-checker --production --json > all_licenses.json && license-checker --production --summary > all_licenses.txt"
+    "licenses:generate": "license-checker --production --json > all_licenses.json && license-checker --production --summary > all_licenses.txt",
+    "typecheck": "tsc --noEmit",
+    "test:ci": "vitest run --reporter=dot"
   },
   "dependencies": {
     "@ant-design/icons": "^6.0.0",

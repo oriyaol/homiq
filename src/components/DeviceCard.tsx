@@ -1,25 +1,28 @@
 // src/components/DeviceCard.tsx
-import "../styles/devices.css";
-import type { Device } from "../types/devices";
-import { Lightbulb, Plug, Thermometer, Power } from "lucide-react";
 import { motion } from "framer-motion";
+import {
+    Lightbulb,
+    Plug,
+    Power,
+    Thermometer,
+    type LucideIcon,
+} from "lucide-react";
+import "../styles/devices.css";
+import type { Device, DeviceType } from "../types/devices";
 
 type Props = {
     device: Device;
     onToggle: (id: string) => void;
 };
 
-const TypeIcon = {
+const TypeIcon: Record<DeviceType, LucideIcon> = {
     light: Lightbulb,
     plug: Plug,
     thermostat: Thermometer,
-} as const;
+};
 
 export default function DeviceCard({ device, onToggle }: Props) {
-    // fallback כדי למנוע קריסה אם device.type לא תואם
-    const Icon =
-        (TypeIcon as Record<string, React.ComponentType<any>>)[device.type] ??
-        Lightbulb;
+    const Icon = TypeIcon[device.type];
 
     return (
         <motion.div
@@ -37,13 +40,10 @@ export default function DeviceCard({ device, onToggle }: Props) {
                 </span>
                 <div>
                     <div className="device-card__name">{device.name}</div>
-                    {/* מציג גם את החדר אם מוגדר */}
                     <div className="device-card__meta">
-                        {(device.room ?? device.type)} • {device.on ? "On" : "Off"}
-                    </div>
-                    <div className="device-card__name">{device.name}</div>
-                    <div className="device-card__meta">
-                        {prettyType(device.type)} • {device.on ? "On" : "Off"}
+                        {prettyType(device.type)}
+                        {device.room ? ` • ${prettyRoom(device.room)}` : ""} •{" "}
+                        {device.on ? "On" : "Off"}
                     </div>
                 </div>
             </div>
@@ -65,8 +65,27 @@ export default function DeviceCard({ device, onToggle }: Props) {
 }
 
 function prettyType(t: Device["type"]) {
-    if (t === "light") return "Light";
-    if (t === "plug") return "Plug";
-    if (t === "thermostat") return "Thermostat";
-    return String(t);
+    switch (t) {
+        case "light":
+            return "Light";
+        case "plug":
+            return "Plug";
+        case "thermostat":
+            return "Thermostat";
+        default:
+            return String(t);
+    }
+}
+
+function prettyRoom(r: NonNullable<Device["room"]>) {
+    switch (r) {
+        case "living":
+            return "Living";
+        case "bedroom":
+            return "Bedroom";
+        case "kitchen":
+            return "Kitchen";
+        case "hall":
+            return "Hall";
+    }
 }

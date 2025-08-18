@@ -1,28 +1,28 @@
+// src/services/api.ts
 import axios from "axios";
+import type { Device } from "../types/devices";
 
-// axios instance – אם תרצי, תחליפי ל־baseURL אמיתי בהמשך
-export const api = axios.create({
-    baseURL: "https://jsonplaceholder.typicode.com",
-    timeout: 8000,
-});
+// ---- Devices ----
+export async function fetchDevices(): Promise<Device[]> {
+    const { data } = await axios.get<Device[]>("/api/devices");
+    return data;
+}
 
-// טיפוס “עדכון” בפיד
+export async function setDeviceState(id: string, on: boolean): Promise<Device> {
+    const { data } = await axios.post<Device>(`/api/devices/${id}/toggle`, { on });
+    return data;
+}
+
+// ---- Updates ----
 export type UpdateItem = {
-    id: number;
-    title: string;
-    body: string;
-    createdAt: string; // ISO
+    version: string;   // "0.2.0"
+    date: string;      // "2025-08-18"
+    notes: string[];   // ["Add X", "Fix Y"]
 };
 
-// פונקציה שמביאה עדכונים (דמו) ומייצרת תאריכים אחרונים
-export async function fetchUpdates(limit = 6): Promise<UpdateItem[]> {
-    const res = await api.get(`/posts?_limit=${limit}`);
-    const now = Date.now();
-    return res.data.map((p: any, idx: number) => ({
-        id: p.id,
-        title: p.title,
-        body: p.body,
-        // דמו: מפזר זמנים ב- 0–90 דקות אחורה
-        createdAt: new Date(now - (idx + 1) * 15 * 60 * 1000).toISOString(),
-    }));
+export async function fetchUpdates(): Promise<UpdateItem[]> {
+    const { data } = await axios.get<UpdateItem[]>("/updates.json", {
+        headers: { "cache-control": "no-cache" },
+    });
+    return data;
 }

@@ -1,10 +1,10 @@
-import "./styles/globals.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
-import Home from "./pages/Home";
 import Devices from "./pages/Devices";
+import Home from "./pages/Home";
 import Settings from "./pages/Settings";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Updates from "./pages/Updates";
+import "./styles/globals.css";
 // ...
 
 
