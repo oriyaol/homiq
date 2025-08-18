@@ -6,7 +6,6 @@ import Settings from "./pages/Settings";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Updates from "./pages/Updates";
 // ...
-import { SunOutlined, VideoCameraOutlined, ThunderboltOutlined } from '@ant-design/icons';
 
 
 <Route path="/updates" element={<Updates />} />
