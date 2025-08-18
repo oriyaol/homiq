@@ -1,0 +1,24 @@
+.recent-logs {
+  padding: 16px;
+}
+
+.recent-logs__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.recent-logs__list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 8px;
+}
+
+.recent-logs__empty {
+  opacity: 0.7;
+}
+
+.recent-logs__item {
+  font-size: 13px;
+  padding: 4px 0;
+}
