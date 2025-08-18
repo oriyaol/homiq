@@ -93,3 +93,7 @@ Dockerfile + CI/CD – GitHub Actions with semantic versioning and releases.
 
 yaml
 Copy code
+
+
+## Releases
+Initial public release via GitHub Actions (SemVer + Docker Publish).
