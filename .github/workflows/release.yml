@@ -123,14 +123,15 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build & Push Docker image
+            - name: Build & Push Docker image
         if: steps.version.outputs.should_release == 'true'
         uses: docker/build-push-action@v6
         with:
           context: .
           push: true
           tags: |
-            ${{ env.REGISTRY }}/${{ env.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ steps.version.outputs.tag }}
-            ${{ env.REGISTRY }}/${{ env.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+            docker.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.IMAGE_NAME || github.event.repository.name }}:${{ steps.version.outputs.tag }}
+            docker.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.IMAGE_NAME || github.event.repository.name }}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
